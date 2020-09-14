@@ -1,6 +1,6 @@
 package week2;
 
-public class AllCodons {
+public class StringAssigment2Part3 {
 
     public static int findStopCodon(String dnaStr, int startIndex, String stopCodon) {
 //    Find stopCodon starting from (startIndex + 3), currIndex
@@ -73,6 +73,25 @@ public class AllCodons {
         }
     }
 
+    public static int countGenes(String dna) {
+        int startIndex = 0;
+        int count = 0;
+
+        while (true) {
+
+            String geneToFind = findGene(dna, startIndex);
+
+            if (geneToFind.isEmpty()) {
+                break;
+            }
+
+            count++;
+            startIndex = dna.indexOf(geneToFind, startIndex) + geneToFind.length();
+        }
+
+        return count;
+    }
+
 
     public static void testStopCodon() {
 //                    012345678901234567890123456789
@@ -125,9 +144,20 @@ public class AllCodons {
 
     }
 
+    public static void testCountGenes(){
+        String dna = "ATGGGGATGTAGTAATTTCATGCCATAA";
+        int countGenes = countGenes(dna);
+        System.out.println("Number of genes test1: " + countGenes);
+
+        String dna1 = "";
+        int countGenes1 = countGenes(dna1);
+        System.out.println(("Number of genes test2: " + countGenes1));
+    }
+
     public static void main(String[] args) {
         testFindGene();
         testStopCodon();
         testFindAllGenes();
+        testCountGenes();
     }
 }
