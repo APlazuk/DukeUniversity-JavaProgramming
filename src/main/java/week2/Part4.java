@@ -8,6 +8,7 @@ public class Part4 {
 
         URLResource urlResource = new URLResource("https://www.dukelearntoprogram.com//course2/data/manylinks.html");
         String webPage = "youtube.com";
+        StringBuilder result = new StringBuilder();
 
         for (String word : urlResource.words()) {
 
@@ -16,10 +17,11 @@ public class Part4 {
                 int firstQuote = word.indexOf("\"");
                 int lastQuote = word.lastIndexOf("\"");
 
-                return word.substring(firstQuote + 1, lastQuote);
+                String s = word.substring(firstQuote + 1, lastQuote);
+                result.append(s + " ");
             }
         }
-        return "no youtube websites";
+        return result.toString();
     }
 
     public static void main(String[] args) {
