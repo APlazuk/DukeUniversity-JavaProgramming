@@ -107,6 +107,24 @@ public class StorageResourceAsg {
         return (countC + countG) / dna.length();
     }
 
+    public static int countCTG(String dna) {
+        int count = 0;
+        String codon = "CTG";
+        int startIndex = dna.indexOf(codon);
+
+        while (true) {
+
+            if (startIndex != -1) {
+                count++;
+            } else {
+                break;
+            }
+
+            startIndex = dna.indexOf(codon, startIndex + codon.length());
+        }
+        return count;
+    }
+
 
     public static void testFindAllGenes() {
 //                    0123456789012345678901234567
@@ -138,9 +156,22 @@ public class StorageResourceAsg {
         System.out.println(cgRatio(dna3));
     }
 
+
+    public static void testCountCTG(){
+        String dna = "ATGCTGCTG";
+        System.out.println(countCTG(dna));
+
+        String dna1 = "ATGCTGGATGTAGTAATTTCATGCCATAA";
+        System.out.println(countCTG(dna1));
+
+        String dna2 = "";
+        System.out.println(countCTG(dna2));
+    }
+
     public static void main(String[] args) {
         testFindAllGenes();
         testCgRatio();
+        testCountCTG();
 
     }
 }
