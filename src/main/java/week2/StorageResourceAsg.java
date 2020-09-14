@@ -99,8 +99,8 @@ public class StorageResourceAsg {
                 break;
             }
 
-            c = dna.indexOf("C", (int) (c + "C".length()));
-            g = dna.indexOf("G", (int) (g + "G".length()));
+            c = dna.indexOf("C", (int) (c + 1));
+            g = dna.indexOf("G", (int) (g + 1));
 
         }
 
