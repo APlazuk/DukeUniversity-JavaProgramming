@@ -4,10 +4,13 @@ package week3; /**
  * @author Duke Software Team
  */
 
-import edu.duke.*;
-import org.apache.commons.csv.*;
+import edu.duke.DirectoryResource;
+import edu.duke.FileResource;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 public class CSVMax {
 	public static CSVRecord getLargestOfTwo(CSVRecord largestSoFar, CSVRecord record) {

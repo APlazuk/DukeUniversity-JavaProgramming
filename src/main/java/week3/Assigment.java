@@ -17,10 +17,10 @@ public class Assigment {
         System.out.println(countryInfo(parser, "Nauru"));
 
         parser = fr.getCSVParser();
-        listExportersTwoProducts(parser, "fish", "nuts");
+        listExportersTwoProducts(parser, "cotton", "flowers");
 
         parser = fr.getCSVParser();
-        System.out.println(numberOfExporter(parser, "sugar"));
+        System.out.println(numberOfExporter(parser, "cocoa"));
 
         parser = fr.getCSVParser();
         bigExporters(parser, "$999,999,999,999");
