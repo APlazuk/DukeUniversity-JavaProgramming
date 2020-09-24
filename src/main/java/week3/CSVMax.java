@@ -29,6 +29,26 @@ public class CSVMax {
 		//The largestSoFar is the answer
 		return largestSoFar;
 	}
+	public static CSVRecord hottestInManyDays() throws IOException {
+		CSVRecord largestSoFar = null;
+		DirectoryResource dr = new DirectoryResource();
+		// iterate over files
+		for (File file : dr.selectedFiles()) {
+			FileResource fr = new FileResource(file);
+			// use method to get largest in file.}
+			CSVRecord record = hottestHourInFile(fr.getCSVParser());
+			if (largestSoFar == null){
+				largestSoFar = record;
+			}
+			double largestTemp = Double.parseDouble(largestSoFar.get("TemperatureF"));
+			double currentTemp = Double.parseDouble(record.get("TemperatureF"));
+			if (currentTemp > largestTemp){
+				largestSoFar = record;
+			}
+		}
+		return largestSoFar;
+	}
+
 
 	public static void testHottestInDay () throws IOException {
 		FileResource fr = new FileResource("src/main/resources/data/2015/weather-2015-01-01.csv");
@@ -37,7 +57,14 @@ public class CSVMax {
 				   " at " + largest.get("TimeEST"));
 	}
 
+	public static void testHottestInManyDays() throws IOException {
+		CSVRecord largest = hottestInManyDays();
+		System.out.println("hottest temperature was " + largest.get("TemperatureF") +
+				" at " + largest.get("DateUTC"));
+	}
+
 	public static void main(String[] args) throws IOException {
-		testHottestInDay();
+//		testHottestInDay();
+	testHottestInManyDays();
 	}
 }
